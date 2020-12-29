@@ -1,0 +1,820 @@
+define({ "api": [
+  {
+    "type": "post",
+    "url": "/forgotpassword",
+    "title": "Request to get password reset link in mail",
+    "name": "forgotPassword",
+    "group": "Auth",
+    "version": "1.0.0",
+    "permission": [
+      {
+        "name": "Public"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "handle",
+            "description": "<p>(email)</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"handle\" : \"myEmail@logic-square.com\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "json",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\" : false,\n    \"handle\" : \"myEmail@logic-square.com\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/rest/auth/password.js",
+    "groupTitle": "Auth"
+  },
+  {
+    "type": "post",
+    "url": "/resetpassword",
+    "title": "Request to set a new password",
+    "name": "resetPassword",
+    "group": "Auth",
+    "version": "1.0.0",
+    "permission": [
+      {
+        "name": "Public"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "token",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"email\" : \"myEmail@logic-square.com\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "json",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\" : false,\n    \"email\" : \"myEmail@logic-square.com\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/rest/auth/password.js",
+    "groupTitle": "Auth"
+  },
+  {
+    "type": "post",
+    "url": "/login",
+    "title": "User login",
+    "name": "userLogin",
+    "group": "Auth",
+    "version": "1.0.0",
+    "permission": [
+      {
+        "name": "Public"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "handle",
+            "description": "<p>(mobile / email)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>user's password</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"handle\" : \"myEmail@logic-square.com\",\n    \"password\" : \"myNewPassword\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "json",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\" : false,\n    \"handle\" : \"myEmail@logic-square.com\",\n    \"token\": \"authToken.abc.xyz\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/rest/auth/index.js",
+    "groupTitle": "Auth"
+  },
+  {
+    "type": "post",
+    "url": "/signup",
+    "title": "User registration",
+    "name": "userRegistration",
+    "group": "Auth",
+    "version": "1.0.0",
+    "permission": [
+      {
+        "name": "Public"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "phone",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": false,
+            "field": "name",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"email\" : \"myEmail@logic-square.com\",\n    \"phone\" : \"00000000000\",\n    \"name\"  :{\n         \"first\":\"Jhon\",\n         \"last\" :\"Doe\"\n     }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "json",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\" : false,\n    \"user\" : {\n         \"email\" : \"myEmail@logic-square.com\",\n         \"phone\" : \"00000000000\",\n         \"name\"  :{\n             \"first\":\"Jhon\",\n             \"last\" :\"Doe\"\n          }\n     }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/rest/auth/signup.js",
+    "groupTitle": "Auth"
+  },
+  {
+    "type": "post",
+    "url": "/todos",
+    "title": "Todo manual insert",
+    "name": "todoManualInsert",
+    "group": "Todo",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The JWT Token in format &quot;Bearer xxxx.yyyy.zzzz&quot;</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "text",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": false,
+            "field": "status",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Boolean",
+            "optional": false,
+            "field": "complete",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"text\": \"Go to Market\",\n    \"status\": true,\n    \"complete\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "json",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\" : false,\n    \"todos\" : {\n         \"text\": \"Go to Market\",\n         \"status\": true,\n         \"complete\": true\n     }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/rest/todos.js",
+    "groupTitle": "Todo"
+  },
+  {
+    "type": "get",
+    "url": "/todos",
+    "title": "Todo list",
+    "name": "todoList",
+    "group": "todos",
+    "version": "1.0.0",
+    "permission": [
+      {
+        "name": "Todos"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The JWT Token in format &quot;Bearer xxxx.yyyy.zzzz&quot;</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "json",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\" : false,\n    \"todos\" : [{\n         \"text\": \"Go to Market\",\n         \"status\": true,\n         \"complete\": true\n     },]\n}",
+          "type": "type"
+        }
+      ]
+    },
+    "filename": "routes/rest/todos.js",
+    "groupTitle": "todos"
+  },
+  {
+    "type": "delete",
+    "url": "/todos/:id",
+    "title": "Todos delete",
+    "name": "todosDelete",
+    "group": "todos",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The JWT Token in format &quot;Bearer xxxx.yyyy.zzzz&quot;</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Users unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "json",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\" : false\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/rest/todos.js",
+    "groupTitle": "todos"
+  },
+  {
+    "type": "put",
+    "url": "/todos/:id",
+    "title": "Todos update, one or multiple fields",
+    "name": "todoUpdate",
+    "group": "todo",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The JWT Token in format &quot;Bearer xxxx.yyyy.zzzz&quot;</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Users unique ID.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"text\": \"Go to Market\",\n    \"status\": true,\n    \"complete\": true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "json",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\" : false,\n    \"todos\" : {\n         \"text\": \"Go to Market\",\n         \"status\": true,\n         \"complete\": true\n     }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/rest/todos.js",
+    "groupTitle": "todo"
+  },
+  {
+    "type": "delete",
+    "url": "/user/:id",
+    "title": "User delete",
+    "name": "userDelete",
+    "group": "user",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The JWT Token in format &quot;Bearer xxxx.yyyy.zzzz&quot;</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Users unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "json",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\" : false\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/rest/users.js",
+    "groupTitle": "user"
+  },
+  {
+    "type": "get",
+    "url": "/user/:id",
+    "title": "User Details",
+    "name": "userDetails",
+    "group": "user",
+    "version": "1.0.0",
+    "permission": [
+      {
+        "name": "User"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The JWT Token in format &quot;Bearer xxxx.yyyy.zzzz&quot;</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Users unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "json",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\" : false,\n    \"users\" : [\n         \"email\" : \"myEmail@logic-square.com\",\n         \"phone\" : \"00000000000\",\n         \"name\"  :{\n               \"first\":\"Jhon\",\n               \"last\" :\"Doe\"\n     ]\n}",
+          "type": "type"
+        }
+      ]
+    },
+    "filename": "routes/rest/users.js",
+    "groupTitle": "user"
+  },
+  {
+    "type": "get",
+    "url": "/users",
+    "title": "User list",
+    "name": "userList",
+    "group": "user",
+    "version": "1.0.0",
+    "permission": [
+      {
+        "name": "User"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The JWT Token in format &quot;Bearer xxxx.yyyy.zzzz&quot;</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "json",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\" : false,\n    \"users\" : [{\n         \"email\" : \"myEmail@logic-square.com\",\n         \"phone\" : \"00000000000\",\n         \"name\"  :{\n               \"first\":\"Jhon\",\n               \"last\" :\"Doe\"\n     }]\n}",
+          "type": "type"
+        }
+      ]
+    },
+    "filename": "routes/rest/users.js",
+    "groupTitle": "user"
+  },
+  {
+    "type": "post",
+    "url": "/user",
+    "title": "User manual instert",
+    "name": "userManualInsert",
+    "group": "user",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The JWT Token in format &quot;Bearer xxxx.yyyy.zzzz&quot;</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "email",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "phone",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "Object",
+            "optional": false,
+            "field": "name",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"email\" : \"myEmail@logic-square.com\",\n    \"phone\" : \"00000000000\",\n    \"name\"  :{\n         \"first\":\"Jhon\",\n         \"last\" :\"Doe\"\n     },\n     \"isActive\" : true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "json",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\" : false,\n    \"user\" : {\n         \"email\" : \"myEmail@logic-square.com\",\n         \"phone\" : \"00000000000\",\n         \"name\"  :{\n             \"first\":\"Jhon\",\n             \"last\" :\"Doe\"\n          },\n         \"isActive\" : true,\n         \"password\" : \"myPass\"\n     }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/rest/users.js",
+    "groupTitle": "user"
+  },
+  {
+    "type": "put",
+    "url": "/user/:id",
+    "title": "User update, one or multiple fields",
+    "name": "userUpdate",
+    "group": "user",
+    "version": "1.0.0",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>The JWT Token in format &quot;Bearer xxxx.yyyy.zzzz&quot;</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Users unique ID.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Request-Example:",
+          "content": "{\n    \"email\" : \"myEmail@logic-square.com\",\n    \"phone\" : \"00000000000\",\n    \"name\"  :{\n         \"first\":\"Jhon\",\n         \"last\" :\"Doe\"\n     },\n     \"isActive\" : true\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "200": [
+          {
+            "group": "200",
+            "type": "json",
+            "optional": false,
+            "field": "name",
+            "description": "<p>description</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n    \"error\" : false,\n    \"user\" : {\n         \"email\" : \"myEmail@logic-square.com\",\n         \"phone\" : \"00000000000\",\n         \"name\"  :{\n             \"first\":\"Jhon\",\n             \"last\" :\"Doe\"\n          },\n         \"isActive\" : true,\n         \"password\" : \"myPass\"\n     }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "routes/rest/users.js",
+    "groupTitle": "user"
+  }
+] });
