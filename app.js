@@ -15,13 +15,12 @@ const webRoutes = require("./routes/web");
 const app = express();
 
 if (
-  process.env.NODE_ENV !== undefined
-  && process.env.NODE_ENV !== "development"
+  process.env.NODE_ENV !== undefined &&
+  process.env.NODE_ENV !== "development"
 ) {
   app.use(helmet());
 }
 app.use(cors());
-
 // Database setup
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {

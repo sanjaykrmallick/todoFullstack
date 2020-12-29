@@ -8,7 +8,6 @@ module.exports = {
    * @apiGroup todos
    * @apiVersion  1.0.0
    * @apiPermission Todos
-   * @apiHeader {String} Authorization The JWT Token in format "Bearer xxxx.yyyy.zzzz"
    *
    *
    * @apiSuccess (200) {json} name description
@@ -39,9 +38,8 @@ module.exports = {
    *
    * @api {post} /todos Todo manual insert
    * @apiName todoManualInsert
-   * @apiGroup Todo
+   * @apiGroup todos
    * @apiVersion  1.0.0
-   * @apiHeader {String} Authorization The JWT Token in format "Bearer xxxx.yyyy.zzzz"
    *
    *
    * @apiParam  {String} text
@@ -99,9 +97,8 @@ module.exports = {
    *
    * @api {put} /todos/:id Todos update, one or multiple fields
    * @apiName todoUpdate
-   * @apiGroup todo
+   * @apiGroup todos
    * @apiVersion  1.0.0
-   * @apiHeader {String} Authorization The JWT Token in format "Bearer xxxx.yyyy.zzzz"
    *
    *
    * @apiParam {String} id Users unique ID.
@@ -167,12 +164,10 @@ module.exports = {
    * @apiName todosDelete
    * @apiGroup todos
    * @apiVersion  1.0.0
-   * @apiHeader {String} Authorization The JWT Token in format "Bearer xxxx.yyyy.zzzz"
    *
    *
    * @apiParam {String} id Users unique ID.
    *
-   * @apiSuccess (200) {json} name description
    *
    * @apiSuccessExample {json} Success-Response:
    * {

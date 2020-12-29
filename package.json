@@ -23,7 +23,7 @@
     "test:nocoverage": "ava",
     "test:withcoverage": "nyc ava",
     "test": "npm run test:withcoverage",
-    "gendoc": "apidoc -i routes/rest -o public/docs"
+    "gendoc": "apidoc -i routes/rest/ -o public/docs"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
