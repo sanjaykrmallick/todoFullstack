@@ -10,7 +10,9 @@ module.exports = {
    * @apiPermission Todos
    *
    *
-   * @apiSuccess (200) {json} name description
+   * @apiSuccess (200) {String} text todo name 
+   * @apiSuccess (200) {Boolean} status status of todo item for showing active task
+   * @apiSuccess (200) {Boolean} complete Boolean value for checking wheather todo task is completetd or not 
    *
    *
    * @apiSuccessExample {type} Success-Response:
@@ -103,7 +105,9 @@ module.exports = {
    *
    * @apiParam {String} id Users unique ID.
    *
-   * @apiSuccess (200) {json} name description
+   * @apiSuccess (200) {String} text
+   * @apiSuccess (200) {Boolean} status
+   * @apiSuccess (200) {Boolean} complete
    *
    * @apiParamExample  {json} Request-Example:
    * {

@@ -16,10 +16,24 @@
         "200": [
           {
             "group": "200",
-            "type": "json",
+            "type": "String",
             "optional": false,
-            "field": "name",
-            "description": "<p>description</p>"
+            "field": "text",
+            "description": "<p>todo name</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "status",
+            "description": "<p>status of todo item for showing active task</p>"
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "complete",
+            "description": "<p>Boolean value for checking wheather todo task is completetd or not</p>"
           }
         ]
       },
@@ -130,10 +144,24 @@
         "200": [
           {
             "group": "200",
-            "type": "json",
+            "type": "String",
             "optional": false,
-            "field": "name",
-            "description": "<p>description</p>"
+            "field": "text",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "status",
+            "description": ""
+          },
+          {
+            "group": "200",
+            "type": "Boolean",
+            "optional": false,
+            "field": "complete",
+            "description": ""
           }
         ]
       },
